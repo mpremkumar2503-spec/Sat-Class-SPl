@@ -1,0 +1,149 @@
+1 What is a Request Object?
+
+The Request Object (req) in Express.js represents the HTTP request sent by the client (browser or frontend) to the server.
+
+It contains all information about the request such as:
+
+Body data
+
+URL parameters
+
+Query parameters
+
+Headers
+
+Method (GET, POST, PUT, DELETE)
+
+URL
+
+Example:
+
+app.get("/user", (req, res) => {
+   console.log(req);
+});
+
+
+req holds all client request information.
+
+2 What is the use of body data? When do we use it?
+
+req.body is used to receive data sent from the client inside the request body.
+
+It is mostly used in:
+
+Form submissions
+
+Login/Register APIs
+
+Creating new data
+
+Example:
+
+app.post("/register", (req, res) => {
+   const name = req.body.name;
+   const email = req.body.email;
+});
+
+Example request body:
+
+{
+ "name":"Prem",
+ "email":"prem@gmail.com"
+}
+
+ Used when sending large or structured data from frontend to backend.
+
+3 What is the use of headers data? When do we use it?
+
+req.headers is used to read request header information sent by the client.
+
+Common uses:
+
+Authentication tokens (JWT)
+
+Content type
+
+Browser information
+
+Example:
+
+app.get("/profile", (req, res) => {
+   const token = req.headers.authorization;
+});
+
+Example header:
+
+Authorization: Bearer jwt_token_here
+
+ Used for security, authentication, and request metadata.
+
+4 What is the use of params data? When do we use it?
+
+req.params is used to get values from the URL path.
+
+Example:
+
+app.get("/user/:id", (req, res) => {
+   const userId = req.params.id;
+});
+
+URL:
+
+/user/101
+
+Output:
+
+101
+
+ Used when accessing specific resources like user ID, product ID, etc.
+
+5 What is the use of query data? When do we use it?
+
+req.query is used to read query parameters from the URL.
+
+Example:
+
+app.get("/search", (req, res) => {
+   const keyword = req.query.keyword;
+});
+
+URL:
+
+/search?keyword=react
+
+Output:
+
+react
+
+Used for:
+
+Search
+
+Filters
+
+Pagination
+
+6 What is Request Object and when do we use it?
+
+The Request Object (req) is used whenever the server needs to read information from the client request.
+
+We use it to:
+
+Read user input (req.body)
+
+Get URL parameters (req.params)
+
+Read query strings (req.query)
+
+Access headers (req.headers)
+
+Example:
+
+app.post("/login", (req, res) => {
+   const email = req.body.email;
+   const password = req.body.password;
+});
+
+
+
+
